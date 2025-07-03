@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solar &amp; Weather Forecast | SolarScope</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<link href="forecast.css" rel="stylesheet"/>
+<meta content="Use SolarScope to get accurate solar and weather forecasts, estimate daily solar output, and track sunrise/sunset data." name="description"/></head>
+<body>
+<!-- Animated Background -->
+<div class="bg-animation">
+<div class="floating-orb orb-1"></div>
+<div class="floating-orb orb-2"></div>
+<div class="floating-orb orb-3"></div>
+</div>
+<!-- Navigation -->
+<nav class="nav">
+<div class="nav-container">
+<div class="logo">SolarScope</div>
+<ul class="nav-links">
+<li><a href="features.html">Features</a></li>
+<li><a href="solarsizeestimator.html">Calculator</a></li>
+<li><a href="contactus.html">Contact</a></li>
+</ul>
+</div>
+</nav>
+<!-- Page Header -->
+<!-- Main Content -->
+<main class="main-content">
+<div class="calculator-container">
+<div class="calculator-header">
+<h2 class="calculator-title">GPS Solar Generation Estimator</h2>
+<div class="efficiency-badge">
+<span>⚡</span>
+<span>87% System Efficiency</span>
+</div>
+<p class="calculator-subtitle">
+          Enter your solar panel capacity and get instant weather-based generation forecasts with global coverage and pinpoint accuracy.
+        </p>
+</div>
+<div class="input-section">
+<div class="input-group">
+<label class="input-label" for="panelSize">Solar Panel Capacity</label>
+<input id="panelSize" min="0.1" placeholder="Enter panel size in kW (e.g. 5)" step="0.1" type="number"/>
+</div>
+<button class="forecast-btn" id="forecastBtn" onclick="getForecast()">Get Solar Forecast</button>
+</div>
+<div class="results-container">
+<div class="result" id="result"></div>
+<div class="chart-container" id="chartContainer" style="display:none;">
+<canvas id="solarChart"></canvas>
+</div>
+<div class="weather-details" id="weatherDetails"></div>
+<div class="forecast-days" id="forecastDays"></div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-section">
+<h3>SolarScope</h3>
+<p>Empowering homeowners with intelligent solar planning tools and expert guidance for a sustainable future.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="forecast.html">Solar Energy Estimator</a>
+<a href="solarsizeestimator.html">Battery Backup</a>
+<a href="roiandbatcalc.html">ROI Calculator</a>
+<a href="undercons.html">Product Reviews</a>
+</div>
+<div class="footer-section">
+<h3>Resources</h3>
+<a href="helpguide.html">Solar Guide</a>
+<a href="installationguide.html">Installation Tips</a>
+<a href="undercons.html">Financing Options</a>
+<a href="solarmaintenance.html">Maintenance Guide</a>
+</div>
+<div class="footer-section">
+<h3>Support</h3>
+<a href="solarguide.html">Help Center</a>
+<a href="contactus.html">Contact Us</a>
+<a href="privacypolicy.html">Privacy Policy</a>
+<a href="termsofser.html">Terms of Service</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 SolarScope. All rights reserved. Powering the future, one home at a time.</p>
+</div>
+</footer>
+<script src="forecast.js"></script>
+</body>
+</html>

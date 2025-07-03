@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solar Calculator | SolarScope</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="roiandbatcalc.css" rel="stylesheet"/>
+<meta content="Calculate your solar system ROI and battery size based on your needs, location, and energy usage in Pakistan." name="description"/></head>
+<body>
+<!-- Animated Background -->
+<div class="bg-animation">
+<div class="floating-orb orb-1"></div>
+<div class="floating-orb orb-2"></div>
+<div class="floating-orb orb-3"></div>
+</div>
+<!-- Navigation -->
+<nav class="nav">
+<div class="nav-container">
+<div class="logo">SolarScope</div>
+<ul class="nav-links">
+<li><a href="features.html">Features</a></li>
+<li><a href="solarsizeestimator.html">Calculator</a></li>
+<li><a href="contactus.html">Contact</a></li>
+</ul>
+</div>
+</nav>
+<div class="container">
+<!-- Header -->
+<div class="header">
+<h1>Solar Calculator</h1>
+<p>Calculate your solar savings and plan your energy independence journey</p>
+</div>
+<!-- Tab Navigation -->
+<nav class="tab-nav">
+<button class="active" data-target="roiSection" type="button">💰 ROI Calculator</button>
+<button data-target="batterySection" type="button">🔋 Battery Calculator</button>
+</nav>
+<!-- ROI Section -->
+<section id="roiSection">
+<!-- Accuracy Notice -->
+<div class="accuracy-notice">
+<h4>💡 For Maximum Accuracy</h4>
+<p><strong>Use Your Average Monthly Units:</strong> Don't just use one month's bill. For best results, add up all the units you consumed in the past 12 months, then divide by 12. This gives you a more accurate average.</p>
+<div class="accuracy-example">
+<strong>Example:</strong> If your total yearly consumption was 6,000 units, enter 500 units (6,000 ÷ 12 = 500)
+                </div>
+<p><strong>Why?</strong> Electricity usage changes with seasons (more AC in summer, less in winter). Using the average gives you realistic savings calculations.</p>
+</div>
+<div class="calculator-card">
+<h3 class="section-title">⚡ Basic Information</h3>
+<div class="input-grid">
+<div class="input-group">
+<label for="monthlyConsumption">Monthly Units Consumed</label>
+<input id="monthlyConsumption" min="0" placeholder="e.g., 500" step="1" type="number"/>
+</div>
+<div class="input-group">
+<label for="systemSize">Solar System Size (kW)</label>
+<input id="systemSize" min="0" placeholder="e.g., 5.0" step="0.1" type="number"/>
+</div>
+<div class="input-group">
+<label for="region">Region</label>
+<select id="region">
+<option value="">Select Region</option>
+<option value="punjab">Punjab (1,550 kWh/kW/year)</option>
+<option value="sindh">Sindh (1,700 kWh/kW/year)</option>
+<option value="kpk">KPK (1,450 kWh/kW/year)</option>
+<option value="balochistan">Balochistan (1,850 kWh/kW/year)</option>
+<option value="islamabad">Islamabad (1,520 kWh/kW/year)</option>
+</select>
+</div>
+<div class="input-group">
+<label for="systemCostPerKW">System Cost (Rs/kW)</label>
+<input id="systemCostPerKW" max="200000" min="80000" step="1000" type="number" value="120000"/>
+</div>
+</div>
+<button class="calculate-btn" onclick="calculateROI()">Calculate Your Savings</button>
+</div>
+<div class="results" id="results">
+<!-- Main Savings Hook -->
+<div class="savings-hero" id="savingsHero">
+<h2 class="savings-title">🎉 Congratulations! You'll Save Big with Solar!</h2>
+<div class="savings-highlight">
+<div class="savings-amount" id="fiveYearSavings">Rs 0</div>
+<div class="savings-subtitle">You will save this much in just 5 years!</div>
+</div>
+<div class="savings-breakdown">
+<div class="breakdown-item">
+<span class="breakdown-value" id="monthlySavings">Rs 0</span>
+<span class="breakdown-label">Monthly Savings</span>
+</div>
+<div class="breakdown-item">
+<span class="breakdown-value" id="yearlySavings">Rs 0</span>
+<span class="breakdown-label">Yearly Savings</span>
+</div>
+<div class="breakdown-item">
+<span class="breakdown-value" id="lifetimeSavings">Rs 0</span>
+<span class="breakdown-label">25-Year Total Savings</span>
+</div>
+</div>
+</div>
+<!-- Technical Details -->
+<div class="technical-details">
+<button class="details-toggle" onclick="toggleTechnicalDetails()">
+                        📊 View Technical Details <span id="toggleIcon">▼</span>
+</button>
+<div class="details-content" id="technicalContent" style="display: none;">
+<h4 style="color: var(--white); margin-bottom: 1rem;">Financial Analysis</h4>
+<div class="results-grid-small">
+<div class="result-card-small" id="irrCard">
+<div class="result-value-small" id="irr">-</div>
+<div class="result-label-small">Internal Rate of Return</div>
+</div>
+<div class="result-card-small">
+<div class="result-value-small" id="paybackPeriod">-</div>
+<div class="result-label-small">Payback Period</div>
+</div>
+<div class="result-card-small">
+<div class="result-value-small" id="totalROI">-</div>
+<div class="result-label-small">Total ROI</div>
+</div>
+<div class="result-card-small">
+<div class="result-value-small" id="systemEfficiency">-</div>
+<div class="result-label-small">System Utilization</div>
+</div>
+</div>
+</div>
+</div>
+<div class="recommendations" id="recommendations"></div>
+<div class="assumptions">
+<h4>📋 How We Calculate Your Savings</h4>
+<p><strong>Off-grid System:</strong> Extra solar power beyond what you use doesn't add to your savings (you can't sell it back to the grid).</p>
+<p><strong>Bill Savings:</strong> Based on current IESCO electricity rates, which typically increase by 12% each year.</p>
+<p><strong>Present Value:</strong> All future savings are converted to today's money value to give you realistic comparisons.</p>
+<p><strong>Solar Panel Performance:</strong> Solar panels produce slightly less electricity each year (about 0.5% reduction annually).</p>
+<p><strong>Maintenance Costs:</strong> Includes system cleaning, repairs, and component replacement over 25 years.</p>
+<p><strong>Financial Analysis:</strong> Uses standard investment metrics like NPV (Net Present Value) and IRR (Internal Rate of Return) to show if solar is a good investment for you.</p>
+</div>
+</div>
+</section>
+<!-- Battery Section -->
+<section id="batterySection" style="display:none;">
+<div class="calculator-card">
+<h3 class="section-title">🔋 Battery Requirements</h3>
+<div class="input-grid">
+<div class="input-group">
+<label for="batteryMonthlyConsumption">Monthly Units Consumed</label>
+<input id="batteryMonthlyConsumption" min="0" placeholder="e.g., 500" step="1" type="number"/>
+</div>
+<div class="input-group">
+<label for="backupDays">Backup Days Required</label>
+<input id="backupDays" max="5" min="1" step="1" type="number" value="2"/>
+</div>
+<div class="input-group">
+<label for="batteryDOD">Battery Depth of Discharge (%)</label>
+<input id="batteryDOD" max="90" min="50" step="5" type="number" value="80"/>
+</div>
+<div class="input-group">
+<label for="systemVoltage">System Voltage (V)</label>
+<select id="systemVoltage">
+<option value="12">12V</option>
+<option selected="" value="24">24V</option>
+<option value="48">48V</option>
+</select>
+</div>
+</div>
+<button class="calculate-btn" onclick="calculateBatteryCapacity()">Calculate Battery Size</button>
+</div>
+<div class="recommendations" id="batteryRecommendation" style="display:none;"></div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-section">
+<h3>SolarScope</h3>
+<p>Empowering homeowners with intelligent solar planning tools and expert guidance for a sustainable future.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="forecast.html">Solar Energy Estimator</a>
+<a href="solarsizeestimator.html">Battery Backup</a>
+<a href="roiandbatcalc.html">ROI Calculator</a>
+<a href="undercons.html">Product Reviews</a>
+</div>
+<div class="footer-section">
+<h3>Resources</h3>
+<a href="helpguide.html">Solar Guide</a>
+<a href="installationguide.html">Installation Tips</a>
+<a href="undercons.html">Financing Options</a>
+<a href="solarmaintenance.html">Maintenance Guide</a>
+</div>
+<div class="footer-section">
+<h3>Support</h3>
+<a href="solarguide.html">Help Center</a>
+<a href="contactus.html">Contact Us</a>
+<a href="privacypolicy.html">Privacy Policy</a>
+<a href="termsofser.html">Terms of Service</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 SolarScope. All rights reserved. Powering the future, one home at a time.</p>
+</div>
+</footer>
+<script src="roiandbatcalc.js">
+        // Wait for DOM to be fully loaded
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SolarScope Calculator | Smart Solar Planning</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="solarsizeestimator.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Animated Background -->
+<div class="bg-animation">
+<div class="floating-orb orb-1"></div>
+<div class="floating-orb orb-2"></div>
+<div class="floating-orb orb-3"></div>
+</div>
+<!-- Navigation -->
+<nav class="nav">
+<div class="nav-container">
+<div class="logo">SolarScope</div>
+<ul class="nav-links">
+<li><a href="features.html">Features</a></li>
+<li><a href="solarsizeestimator.html">Calculator</a></li>
+<li><a href="contactus.html">Contact</a></li>
+</ul>
+</div>
+</nav>
+<!-- Main Content -->
+<div class="container">
+<header class="header">
+<h1> Load &amp; Appliances Calculator</h1>
+<p>Plan your complete solar system by analyzing your appliances and energy needs</p>
+</header>
+<main>
+<!-- Add Appliances Section -->
+<div class="card">
+<h2>
+<span class="card-icon">⚡</span>
+          Add Your Appliances
+        </h2>
+<div class="form-grid">
+<div class="form-group">
+<label for="applianceSelect">Appliance Type</label>
+<select id="applianceSelect">
+<option value="">Select appliance</option>
+</select>
+</div>
+<div class="form-group">
+<label for="applianceWatt">Power Consumption (W)</label>
+<input id="applianceWatt" min="1" placeholder="e.g. 75" type="number"/>
+<div class="error-message" id="watt-error">Enter valid watts</div>
+</div>
+<div class="form-group">
+<label for="applianceHours">Daily Usage Hours</label>
+<input id="applianceHours" min="0.1" placeholder="e.g. 8" step="0.1" type="number"/>
+<div class="error-message" id="hours-error">Enter valid hours</div>
+</div>
+</div>
+<button class="btn" disabled="" id="add-btn">Add Appliance</button>
+<div id="applianceTableContainer">
+<div class="table-container" style="display: none;">
+<table class="appliance-table" id="applianceTable">
+<thead>
+<tr>
+<th>Appliance</th>
+<th>Power (W)</th>
+<th>Hours/Day</th>
+<th>Daily Energy (kWh)</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="applianceList"></tbody>
+</table>
+</div>
+<div class="empty-state" id="emptyState">
+<div class="empty-state-icon">🏠</div>
+<p><strong>No appliances added yet</strong></p>
+<p>Add your first appliance above to start planning your solar system!</p>
+</div>
+</div>
+</div>
+<!-- Solar System Configuration -->
+<div class="card">
+<h2>
+<span class="card-icon">☀️</span>
+          Solar System Configuration
+        </h2>
+<div class="form-grid">
+<div class="form-group">
+<label for="solarSize">Solar Panel Size (kW)</label>
+<input id="solarSize" min="0.1" step="0.1" type="number" value="5"/>
+</div>
+<div class="form-group">
+<label for="efficiency">System Efficiency (%)</label>
+<input id="efficiency" max="100" min="50" type="number" value="90"/>
+</div>
+<div class="form-group">
+<label for="batteryAh">Battery Capacity (Ah)</label>
+<input id="batteryAh" min="1" placeholder="e.g. 135" type="number"/>
+</div>
+<div class="form-group">
+<label for="batteryV">Battery Voltage (V)</label>
+<select id="batteryV">
+<option value="12">12V</option>
+<option value="24">24V</option>
+<option value="48">48V</option>
+</select>
+</div>
+</div>
+<button class="btn" disabled="" id="calc-btn">Calculate System Performance</button>
+</div>
+<!-- Results Section -->
+<div class="results" id="results">
+<h2>🎯 Your Solar System Analysis</h2>
+<div class="results-grid"></div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-section">
+<h3>SolarScope</h3>
+<p>Empowering homeowners with intelligent solar planning tools and expert guidance for a sustainable future.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="forecast.html">Solar Energy Estimator</a>
+<a href="solarsizeestimator.html">Battery Backup</a>
+<a href="roiandbatcalc.html">ROI Calculator</a>
+<a href="undercons.html">Product Reviews</a>
+</div>
+<div class="footer-section">
+<h3>Resources</h3>
+<a href="helpguide.html">Solar Guide</a>
+<a href="installationguide.html">Installation Tips</a>
+<a href="undercons.html">Financing Options</a>
+<a href="solarmaintenance.html">Maintenance Guide</a>
+</div>
+<div class="footer-section">
+<h3>Support</h3>
+<a href="solarguide.html">Help Center</a>
+<a href="contactus.html">Contact Us</a>
+<a href="privacypolicy.html">Privacy Policy</a>
+<a href="termsofser.html">Terms of Service</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 SolarScope. All rights reserved. Powering the future, one home at a time.</p>
+</div>
+</footer>
+<script src="solarsizeestimator.js">
+</script>
+</body>
+</html>
