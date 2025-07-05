@@ -292,7 +292,7 @@ function displayDetailedTable(hourlyData) {
   const tableRows = hourlyData.map(data => `
     <tr>
       <td><strong>${data.time}</strong></td>
-      <td>${data.temp}°C</td>
+      
       <td>${data.humidity}%</td>
       <td>${data.wind.toFixed(1)} m/s</td>
       <td>${data.cloudcover}%</td>
